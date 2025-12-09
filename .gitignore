@@ -1,0 +1,15 @@
+.env
+.env.*
+*.key
+*.pem
+*.crt
+*_config/
+traefik/acme.json
+traefik/logs/
+*.bak
+*.backup
+media/
+.DS_Store
+Thumbs.db
+.secrets/
+CREDENTIALS.txt

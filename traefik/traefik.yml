@@ -1,0 +1,45 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+log:
+  level: INFO
+  filePath: /etc/traefik/logs/traefik.log
+
+accessLog:
+  filePath: /etc/traefik/logs/access.log
+
+api:
+  dashboard: true
+  insecure: true
+
+providers:
+  docker:
+    exposedByDefault: false
+    network: traefik_public
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+
+certificatesResolvers:
+  le:
+    acme:
+      email: webmaster@inthearea.party
+      storage: /acme.json
+      tlsChallenge: {}
+      # For production, uncomment:
+      # caServer: "https://acme-v02.api.letsencrypt.org/directory"
+
+ping:
+  entryPoint: web
