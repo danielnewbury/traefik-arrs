@@ -64,8 +64,8 @@ services:
       - WEBUI_PORT=8090
     volumes:
       - qbittorrent_config:/config
-      - ~/media/usb11tb/downloads:/data/downloads
-      - ~/media/usb6tb/downloads:/data2/downloads
+      - ~/media/usb6tb/media/downloads:/data1/downloads
+      - ~/media/usb11tb/media/downloads:/data2/downloads
     ports:
       - "6881:6881"
       - "6881:6881/udp"
@@ -126,8 +126,8 @@ services:
       - TZ=${TZ}
     volumes:
       - radarr_config:/config
-      - ~/media/usb11tb:/data
-      - ~/media/usb6tb:/data2
+      - ~/media/usb6tb:/data1
+      - ~/media/usb11tb:/data2
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr.rule=Host(`radarr.local`)"
@@ -158,8 +158,8 @@ services:
       - TZ=${TZ}
     volumes:
       - sonarr_config:/config
-      - ~/media/usb11tb:/data
-      - ~/media/usb6tb:/data2
+      - ~/media/usb6tb:/data1
+      - ~/media/usb11tb:/data2
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.sonarr.rule=Host(`sonarr.local`)"
@@ -190,8 +190,8 @@ services:
       - TZ=${TZ}
     volumes:
       - lidarr_config:/config
-      - ~/media/usb11tb:/data
-      - ~/media/usb6tb:/data2
+      - ~/media/usb6tb:/data1
+      - ~/media/usb11tb:/data2
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.lidarr.rule=Host(`lidarr.local`)"
@@ -222,8 +222,8 @@ services:
       - TZ=${TZ}
     volumes:
       - bazarr_config:/config
-      - ~/media/usb11tb:/data
-      - ~/media/usb6tb:/data2
+      - ~/media/usb6tb:/data1
+      - ~/media/usb11tb:/data2
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bazarr.rule=Host(`bazarr.local`)"
@@ -254,8 +254,8 @@ services:
       - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
       - plex_config:/config
-      - ~/media/usb11tb:/media
-      - ~/media/usb6tb:/data2
+      - ~/media/usb6tb:/data1
+      - ~/media/usb11tb:/data2
     devices:
       - /dev/dri:/dev/dri
     healthcheck:
